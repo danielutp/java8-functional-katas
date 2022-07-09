@@ -3,8 +3,7 @@ import static org.junit.Assert.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Kata9.execute());
-    /**    assertEquals(Kata1.execute().size(), 4);
+        assertEquals(Kata1.execute().size(), 4);
         System.out.println("Kata 1 solved!");
 
         assertEquals(Kata2.execute().size(), 2);
@@ -32,12 +31,10 @@ public class Main {
         System.out.println("Kata 9 solved!");
 
         assertEquals(Kata10.execute().size(), 2);
-        System.out.println("Kata 10 solved!");
+        System.out.println("Kata 10 solved!" );
 
         assertEquals(Kata11.execute().size(), 2);
         System.out.println("Kata 11 solved!");
-
-     */
 
         System.out.println("ALL DONE, you're a functional programming NINJA!");
     }

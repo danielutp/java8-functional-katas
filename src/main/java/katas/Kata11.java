@@ -4,8 +4,11 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import util.DataUtil;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /*
     Goal: Create a datastructure from the given data:
@@ -63,8 +66,22 @@ public class Kata11 {
         List<Map> boxArts = DataUtil.getBoxArts();
         List<Map> bookmarkList = DataUtil.getBookmarkList();
 
-        return ImmutableList.of(ImmutableMap.of("name", "someName", "videos", ImmutableList.of(
-                ImmutableMap.of("id", 5, "title", "The Chamber", "time", 123, "boxart", "someUrl")
-        )));
+        return lists.stream()
+                .map(e -> Map.of(
+                "name", e.get("name"),
+                "videos", videos.stream()
+                        .filter(video -> video.get("listId").equals(e.get("id")))
+                        .map(en -> Map.of(
+                                "id", en.get("id"),
+                                "title", en.get("title"),
+                                "time", bookmarkList.stream()
+                                        .filter(bookmark -> bookmark.get("videoId").equals(en.get("id")))
+                                        .findFirst().orElseThrow().get("time"),
+                                "boxart", boxArts.stream()
+                                        .filter(boxArt -> Objects.equals(boxArt.get("videoId"), en.get("id")))
+                                        .map(boxArt -> boxArt.get("url"))
+                        ))
+                        .collect(Collectors.toList())
+        )).collect(Collectors.toList());
     }
 }
