@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Kata8.execute());
+        System.out.println(Kata9.execute());
     /**    assertEquals(Kata1.execute().size(), 4);
         System.out.println("Kata 1 solved!");
 
